@@ -1,0 +1,7 @@
+{
+    "ionic-preview.host": "localhost",
+    "ionic-preview.port": 0,
+    "flutter-preview.background-color": "#FFFFFFF",
+    "flutter-preview.host": "localhost",
+    "flutter-preview.port": 9127
+}

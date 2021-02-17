@@ -1,10 +1,23 @@
-# Check out https://docs.codemagic.io/getting-started/yaml/ for more information
 
+# codemagic.yaml
 workflows:
-    flutter-package:
-        name: Flutter or Dart Package
-        environment:
-            flutter: dev
-        scripts:
-            - flutter packages pub get
-            - flutter test
+  default-workflow:
+    name: Default Workflow
+    environment:
+      flutter: stable
+    cache:
+      cache_paths:
+        - $FCI_BUILD_DIR/build
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: "*"
+          include: true
+          source: true
+    scripts:
+      - flutter packages pub get
+      - flutter test --coverage
+    artifacts:
+      - coverage/lcov.info

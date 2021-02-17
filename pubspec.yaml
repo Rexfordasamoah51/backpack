@@ -13,7 +13,6 @@ dependencies:
   auto_route: ^0.6.9
   circular_profile_avatar: ^1.0.8
   cloud_firestore: ^0.16.0
-  crypt: ^3.0.1
   cupertino_icons: ^1.0.1
   cupertino_radio_choice: ^1.0.1+1
   equatable: ^1.2.6

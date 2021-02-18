@@ -1,3 +1,4 @@
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,27 +53,29 @@ class _AppViewState extends State<AppView> {
   NavigatorState get _navigator => _navigatorKey.currentState;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: _navigatorKey,
-      onGenerateRoute: route.Router(),
-      builder: (context, child) {
-        return BlocListener<AuthenticationBloc, AuthenticationState>(
-          listener: (context, state) {
-            switch (state.status) {
-              case AuthenticationStatus.authenticated:
-                _navigator.pushReplacementNamed('/dashboard-view');
-                break;
-              case AuthenticationStatus.unauthenticated:
-                _navigator.pushReplacementNamed('/splash-view');
-                break;
-              default:
-                break;
-            }
-          },
-          child: child,
-        );
-      },
+    return ConnectivityAppWrapper(
+      app: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: _navigatorKey,
+        onGenerateRoute: route.Router(),
+        builder: (context, child) {
+          return BlocListener<AuthenticationBloc, AuthenticationState>(
+            listener: (context, state) {
+              switch (state.status) {
+                case AuthenticationStatus.authenticated:
+                  _navigator.pushReplacementNamed('/dashboard-view');
+                  break;
+                case AuthenticationStatus.unauthenticated:
+                  _navigator.pushReplacementNamed('/splash-view');
+                  break;
+                default:
+                  break;
+              }
+            },
+            child: child,
+          );
+        },
+      ),
     );
   }
 }

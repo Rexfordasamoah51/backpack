@@ -1,3 +1,5 @@
+import 'package:backpack/src/ui/theme/ui_color/uicolors.dart';
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,3 +33,8 @@ class DashboardView extends StatelessWidget {
     ));
   }
 }
+
+//  alignment: Alignment.topCenter,
+//     color: UiColors.uiRed,
+//     message: 'Please connect to an active internet connetion',
+//     disableInteraction: true,

@@ -56,7 +56,7 @@ Theme buildBottomNavigationBar(
             icon: Icon(CupertinoIcons.location_solid,
                 color: checkState == 3 ? UiColors.uiBlack : null)),
         BottomNavigationBarItem(
-            label: 'Profile',
+            label: 'Settings',
             icon: Icon(CupertinoIcons.person_solid,
                 color: checkState == 4 ? UiColors.uiBlack : null))
       ],

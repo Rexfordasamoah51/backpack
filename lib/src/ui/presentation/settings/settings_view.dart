@@ -32,16 +32,18 @@ class SettingsView extends StatelessWidget {
                   children: [
                     LabelTextSettings(
                       text: Text('Login with Touch ID',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: Switch(value: true, onChanged: (value) {}),
                     ),
                     LabelTextSettings(
                       text: Text('Deactivate account',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: const Icon(
                         CupertinoIcons.forward,
                         size: 30,
@@ -49,9 +51,10 @@ class SettingsView extends StatelessWidget {
                     ),
                     LabelTextSettings(
                       text: Text('Terms of service',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: const Icon(
                         CupertinoIcons.forward,
                         size: 30,
@@ -59,22 +62,35 @@ class SettingsView extends StatelessWidget {
                     ),
                     LabelTextSettings(
                       text: Text('Privacy Policy',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: const Icon(
                         CupertinoIcons.forward,
                         size: 30,
                       ),
                     ),
-                    LabelTextSettings(
-                      text: Text('About',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
-                      end: const Icon(
-                        CupertinoIcons.forward,
-                        size: 30,
+                    GestureDetector(
+                      onTap: () {
+                        showAboutDialog(
+                            context: context,
+                            applicationIcon: const FlutterLogo(),
+                            applicationName: 'Backpack',
+                            applicationVersion: '1.0.0',
+                            applicationLegalese:
+                                'Greater version from the backpack team');
+                      },
+                      child: LabelTextSettings(
+                        text: Text('About',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .copyWith(fontSize: 18)),
+                        end: const Icon(
+                          CupertinoIcons.forward,
+                          size: 30,
+                        ),
                       ),
                     ),
                   ],
@@ -97,16 +113,18 @@ class SettingsView extends StatelessWidget {
                   children: [
                     LabelTextSettings(
                       text: Text('Make my account private',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: Switch(value: true, onChanged: (value) {}),
                     ),
                     LabelTextSettings(
                       text: Text('Enable 2FA',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                            fontSize: 18
-                          )),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18)),
                       end: Switch(value: true, onChanged: (value) {}),
                     ),
                   ],

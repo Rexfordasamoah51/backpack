@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -88,7 +89,6 @@ class RegistrationButton extends StatelessWidget {
   const RegistrationButton({
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RegisterCubit, RegisterState>(
@@ -96,10 +96,11 @@ class RegistrationButton extends StatelessWidget {
       builder: (context, state) {
         return ButtonFlat(
           tap: state.status.isValidated
-              ? (startLoading, stopLoading, btnState) {
-                  // ignore: unnecessary_statements
-                  context.read<RegisterCubit>().logInWithCredentials();
+              ? (startLoading, stopLoading, btnState) async{
+                  FocusScope.of(context).unfocus();
                   startLoading();
+                  await context.read<RegisterCubit>().logInWithCredentials();
+                  stopLoading();
                 }
               : null,
           text: 'Sign up',
@@ -224,11 +225,4 @@ class NameInput extends StatelessWidget {
       },
     );
   }
-}
-
-// ignore: unused_element
-void _onWidgetDidBuild(Function callback) {
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    callback();
-  });
 }

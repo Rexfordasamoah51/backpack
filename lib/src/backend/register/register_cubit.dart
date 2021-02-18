@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
 
 import '../authentication/authentication_bloc.dart';
+import '../global_init.dart';
 import '../repository/authentication_repository.dart';
 import '../repository/confirm_password.dart';
 import '../repository/email.dart';
@@ -63,15 +65,24 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      final token = _authenticationRepository.generateToken();
-      await _authenticationRepository.presistToken(token);
-      await _authenticationRepository.addUser(
-          token: token,
-          userEmail: state.email.value,
-          userName: state.userName.value,
-          userPassword: state.password.value);
-      authenticationBloc.add(const AuthenticationUserChanged());
-      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+      await users.doc(state.email.value).get().then((documentSnapshot) {
+        if (documentSnapshot.exists) {
+          debugPrint('Document data: ${documentSnapshot.data()}');
+          emit(state.copyWith(status: FormzStatus.submissionFailure));
+        } else {
+          debugPrint('Document does not exist on the database');
+          final token = _authenticationRepository.generateToken();
+          _authenticationRepository
+            ..presistToken(token)
+            ..addUser(
+                token: token,
+                userEmail: state.email.value,
+                userName: state.userName.value,
+                userPassword: state.password.value);
+          authenticationBloc.add(const AuthenticationUserChanged());
+          emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        }
+      });
     } on Exception {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }

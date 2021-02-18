@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../data/user.dart';
 import '../firebase/firebase_setup.dart';
@@ -28,10 +29,11 @@ class AuthenticationRepository extends FirebaseSetup {
   @override
   Future<void> addUser(
       {String userEmail, String userPassword, String userName, String token}) {
-    return users.doc(token).set(<String, dynamic>{
+    return users.doc(userEmail).set(<String, dynamic>{
+      'token': token,
       'useremail': userEmail,
       'userpassword': userPassword,
-      'userName': userName
+      'userName': userName,
     });
   }
 

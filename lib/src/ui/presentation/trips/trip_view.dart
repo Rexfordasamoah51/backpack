@@ -1,14 +1,20 @@
+import 'package:animations/animations.dart';
+import 'package:backpack/src/ui/presentation/addtrip/add_trip_init.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../gen/assets.gen.dart';
 import '../../theme/ui_color/uicolors.dart';
+import '../addtrip/add_trip_view.dart';
+
+const double _fabDimension = 56;
 
 class Trips extends StatelessWidget {
   const Trips({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+   const _transitionType = ContainerTransitionType.fade;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -16,18 +22,6 @@ class Trips extends StatelessWidget {
           children: [
             const SizedBox(
               height: 10,
-            ),
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Row(
-                children: [
-                  const Icon(
-                    CupertinoIcons.back,
-                    size: 30,
-                  ),
-                  Text('back', style: Theme.of(context).textTheme.headline6),
-                ],
-              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -100,11 +94,31 @@ class Trips extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            const Center(
-              child: CircleAvatar(
-                backgroundColor: UiColors.uiBlue,
-                maxRadius: 25,
-                child: Icon(Icons.add),
+            Center(
+              child: OpenContainer(
+                transitionType: _transitionType,
+                openBuilder: (context, _) {
+                  return const AddTripInit();
+                },
+                closedElevation: 6,
+                closedShape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(_fabDimension / 2),
+                  ),
+                ),
+                closedColor: UiColors.uiBlue,
+                closedBuilder: (context, openContainer) {
+                  return SizedBox(
+                    height: _fabDimension,
+                    width: _fabDimension,
+                    child: Center(
+                      child: Icon(
+                        Icons.add,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(

@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animations: ^1.1.2
   argon_buttons_flutter: ^1.0.6
   auto_route: ^0.6.9
   circular_profile_avatar: ^1.0.8
@@ -29,6 +30,7 @@ dependencies:
   gap: ^1.2.0
   hydrated_bloc: ^6.1.0
   last_state: ^0.1.1
+  mapbox_search: ^2.1.0
   nice_intro: ^0.1.4
   pedantic: ^1.9.2
   perspective_pageview: ^0.1.1
@@ -37,8 +39,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+  # integration_test:
+  #   sdk: flutter
   auto_route_generator: ^0.6.10
   bloc_test: ^7.1.0
   build_runner: any

@@ -9,11 +9,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/addtrip/add_trip_view.dart';
 import '../../presentation/dashboard/view/dashboard_view.dart';
 import '../../presentation/intro/intro_view.dart';
 import '../../presentation/login/login_view.dart';
 import '../../presentation/recovery/recover_account.dart';
 import '../../presentation/register/register_view.dart';
+import '../../presentation/search_ticket/search_ticket.dart';
 import '../../presentation/splash/splash_view.dart';
 import '../../presentation/starter/starter_app.dart';
 
@@ -25,6 +27,8 @@ class Routes {
   static const String recoverAccountView = '/recover-account-view';
   static const String introView = '/intro-view';
   static const String dashboardView = '/dashboard-view';
+  static const String addTripView = '/add-trip-view';
+  static const String searchTicket = '/search-ticket';
   static const all = <String>{
     starterApp,
     splashView,
@@ -33,6 +37,8 @@ class Routes {
     recoverAccountView,
     introView,
     dashboardView,
+    addTripView,
+    searchTicket,
   };
 }
 
@@ -47,6 +53,8 @@ class Router extends RouterBase {
     RouteDef(Routes.recoverAccountView, page: RecoverAccountView),
     RouteDef(Routes.introView, page: IntroView),
     RouteDef(Routes.dashboardView, page: DashboardView),
+    RouteDef(Routes.addTripView, page: AddTripView),
+    RouteDef(Routes.searchTicket, page: SearchTicket),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -103,6 +111,22 @@ class Router extends RouterBase {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
             const DashboardView(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.slideBottom,
+      );
+    },
+    AddTripView: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const AddTripView(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.slideBottom,
+      );
+    },
+    SearchTicket: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const SearchTicket(),
         settings: data,
         transitionsBuilder: TransitionsBuilders.slideBottom,
       );

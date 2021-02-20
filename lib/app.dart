@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'src/backend/authentication/authentication_bloc.dart';
 import 'src/backend/repository/authentication_repository.dart';
+import 'src/ui/global/responsiveness/adaptive_sizes.dart';
 import 'src/ui/global/router/router.gr.dart' as route;
 
 class App extends StatelessWidget {
@@ -54,27 +55,36 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return ConnectivityAppWrapper(
-      app: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorKey: _navigatorKey,
-        onGenerateRoute: route.Router(),
-        builder: (context, child) {
-          return BlocListener<AuthenticationBloc, AuthenticationState>(
-            listener: (context, state) {
-              switch (state.status) {
-                case AuthenticationStatus.authenticated:
-                  _navigator.pushReplacementNamed('/dashboard-view');
-                  break;
-                case AuthenticationStatus.unauthenticated:
-                  _navigator.pushReplacementNamed('/splash-view');
-                  break;
-                default:
-                  break;
-              }
-            },
-            child: child,
-          );
+      app: GestureDetector(
+        onTap: () {
+          final currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            currentFocus.focusedChild.unfocus();
+          }
         },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          navigatorKey: _navigatorKey,
+          onGenerateRoute: route.Router(),
+          builder: (context, child) {
+            return BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) {
+                switch (state.status) {
+                  case AuthenticationStatus.authenticated:
+                    _navigator.pushReplacementNamed('/dashboard-view');
+                    break;
+                  case AuthenticationStatus.unauthenticated:
+                    _navigator.pushReplacementNamed('/splash-view');
+                    break;
+                  default:
+                    break;
+                }
+              },
+              child: child,
+            );
+          },
+        ),
       ),
     );
   }

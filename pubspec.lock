@@ -169,6 +169,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  christian_picker_image:
+    dependency: "direct main"
+    description:
+      name: christian_picker_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.8"
   circular_profile_avatar:
     dependency: "direct main"
     description:

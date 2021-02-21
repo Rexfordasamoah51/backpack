@@ -169,7 +169,7 @@ class _AddTripViewState extends State<AddTripView> {
                                     context.read<ReturndateCubit>();
                                 return GestureDetector(
                                   onTap: () async {
-                                     FocusScope.of(context).unfocus();
+                                    FocusScope.of(context).unfocus();
                                     await selectDate.selectDate(context);
                                   },
                                   child: Card(
@@ -180,7 +180,8 @@ class _AddTripViewState extends State<AddTripView> {
                                         icon:
                                             const Icon(CupertinoIcons.calendar),
                                       ),
-                                      title: Text('Return date (${state.day}/${state.month}/${state.year})',
+                                      title: Text(
+                                          'Return date (${state.day}/${state.month}/${state.year})',
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText1
@@ -194,8 +195,10 @@ class _AddTripViewState extends State<AddTripView> {
                             ),
                           ),
                           const Gap(50),
-                          const Center(
+                          Center(
                             child: SmallButton(
+                              tap: () => Navigator.of(context)
+                                  .pushNamed('/add-image-to-trip'),
                               text: 'Done',
                             ),
                           )

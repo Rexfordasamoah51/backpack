@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../presentation/addtrip/add_trip_view.dart';
+import '../../presentation/addtripimages/add_images_to_trip.dart';
 import '../../presentation/dashboard/view/dashboard_view.dart';
 import '../../presentation/intro/intro_view.dart';
 import '../../presentation/login/login_view.dart';
@@ -29,6 +30,7 @@ class Routes {
   static const String dashboardView = '/dashboard-view';
   static const String addTripView = '/add-trip-view';
   static const String searchTicket = '/search-ticket';
+  static const String addImageToTrip = '/add-image-to-trip';
   static const all = <String>{
     starterApp,
     splashView,
@@ -39,6 +41,7 @@ class Routes {
     dashboardView,
     addTripView,
     searchTicket,
+    addImageToTrip,
   };
 }
 
@@ -55,6 +58,7 @@ class Router extends RouterBase {
     RouteDef(Routes.dashboardView, page: DashboardView),
     RouteDef(Routes.addTripView, page: AddTripView),
     RouteDef(Routes.searchTicket, page: SearchTicket),
+    RouteDef(Routes.addImageToTrip, page: AddImageToTrip),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -127,6 +131,14 @@ class Router extends RouterBase {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
             const SearchTicket(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.slideBottom,
+      );
+    },
+    AddImageToTrip: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            AddImageToTrip(),
         settings: data,
         transitionsBuilder: TransitionsBuilders.slideBottom,
       );

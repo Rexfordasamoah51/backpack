@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:backpack/src/ui/presentation/addtrip/add_trip_view.dart';
+import 'package:backpack/src/ui/presentation/addtripimages/add_images_to_trip.dart';
 import 'package:backpack/src/ui/presentation/search_ticket/search_ticket.dart';
 
 import '../../presentation/dashboard/view/dashboard_view.dart';
@@ -43,7 +44,11 @@ import '../../presentation/starter/starter_app.dart';
     CustomRoute<dynamic>(
         page: AddTripView, transitionsBuilder: TransitionsBuilders.slideBottom),
     CustomRoute<dynamic>(
-        page: SearchTicket, transitionsBuilder: TransitionsBuilders.slideBottom)
+        page: SearchTicket,
+        transitionsBuilder: TransitionsBuilders.slideBottom),
+    CustomRoute<dynamic>(
+        page: AddImageToTrip,
+        transitionsBuilder: TransitionsBuilders.slideBottom)
   ],
 )
 class $Router {}

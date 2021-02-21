@@ -15,7 +15,7 @@ dependencies:
   circular_profile_avatar: ^1.0.8
   cloud_firestore: ^0.16.0
   connectivity_wrapper: ^1.0.4
-  cupertino_icons: ^1.0.1
+  cupertino_icons: ^1.0.0
   cupertino_radio_choice: ^1.0.1+1
   equatable: ^1.2.6
   expandable: ^4.1.4

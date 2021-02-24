@@ -27,6 +27,7 @@ class $AssetsImagesGen {
   AssetGenImage get mapline => const AssetGenImage('assets/images/mapline.png');
   AssetGenImage get messageCircle =>
       const AssetGenImage('assets/images/message-circle.png');
+  AssetGenImage get rec => const AssetGenImage('assets/images/rec.png');
   AssetGenImage get setting => const AssetGenImage('assets/images/setting.png');
   AssetGenImage get share => const AssetGenImage('assets/images/share.png');
   AssetGenImage get travel => const AssetGenImage('assets/images/travel.jpg');

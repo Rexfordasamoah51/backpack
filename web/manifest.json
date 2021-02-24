@@ -1,6 +1,6 @@
 {
-    "name": "backpack",
-    "short_name": "backpack",
+    "name": "Backpack",
+    "short_name": "Backpack",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

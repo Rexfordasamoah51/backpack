@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.backpack">
    <application
-        android:label="backpack"
+        android:label="Backpack"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

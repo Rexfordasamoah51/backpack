@@ -7,8 +7,9 @@ import 'package:mockito/mockito.dart';
 class MockUserRepository extends Mock implements UserRepository {}
 
 void main() {
-  AuthenticationBloc authenticationBloc;
-  MockUserRepository userRepository;
+  var userRepository = MockUserRepository();
+  var authenticationBloc =
+      AuthenticationBloc(userRepository: userRepository);
 
   ///[setup] function is called before any other function
   setUp(() async {
@@ -18,7 +19,7 @@ void main() {
 
   ///[tearDown] is called when ever every function has been process
   tearDown(() {
-    authenticationBloc?.close();
+    authenticationBloc.close();
   });
 
   blocTest<AuthenticationBloc, AuthenticationState>('Initial State',

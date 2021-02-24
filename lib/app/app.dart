@@ -2,10 +2,11 @@ import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'l10n/l10n.dart';
 import 'src/backend/authentication/authentication_bloc.dart';
 import 'src/backend/repository/authentication_repository.dart';
-import 'src/ui/global/responsiveness/adaptive_sizes.dart';
 import 'src/ui/global/router/router.gr.dart' as route;
 
 class App extends StatelessWidget {
@@ -64,6 +65,11 @@ class _AppViewState extends State<AppView> {
           }
         },
         child: MaterialApp(
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,
           navigatorKey: _navigatorKey,
           onGenerateRoute: route.Router(),
